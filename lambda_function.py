@@ -1,9 +1,9 @@
 import alpaca_trade_api as tradeapi
 from alpaca_trade_api.rest import TimeFrame
+import os
 
-
-key = 'PK27T54I07BJ6BJKVF40'
-secret = 'vroOWJYxvaAk8nTl6Jk1IxGB9KuQN2XxCkGqchdH'
+key = os.environ['ALPACA_KEY']
+secret = os.environ['ALPACA_SECRET']
 alpaca_endpoint = 'https://paper-api.alpaca.markets'
 api = tradeapi.REST(key,secret,alpaca_endpoint)
 
