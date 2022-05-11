@@ -9,7 +9,7 @@ class Place_Orders(Api):
     
     def submit_stock_orders(self):
         acceptable_trade_criteria = Stock_Methods.stocks_trade_criteria(self.symbol)
-        current_price = Stock_Methods.stocks_last_hour_close
+        current_price = Stock_Methods.stocks_last_hours_close
         purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)
         
         try:
