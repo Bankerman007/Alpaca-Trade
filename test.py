@@ -18,7 +18,11 @@ def simple_test():
     print(price)
     output = price['close'].sum()
     print(output)
-    quantity= (Place_Orders.api.get_position('TSLA'))
+    try:
+        quantity= int(Place_Orders.api.get_position('TSLA').qty)
+    except:
+        quantity = 0
+    
     print(quantity)
 lambda_handler(1,5)
 
