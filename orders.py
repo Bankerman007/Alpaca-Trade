@@ -4,7 +4,6 @@ from stock_calcs import Stock_Methods
 from api_info import Api
 
 
-
 class Place_Orders(Api):
     
     def submit_stock_orders(self):
@@ -21,10 +20,12 @@ class Place_Orders(Api):
                 print(f'Current open positions is {open}.')
         if acceptable_trade_criteria == False:
             print(f'price too low to execute')    
-        purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)        
-        if float(purchase_price) - float(current_price) >= 0.50:
-                self.api.submit_order(self.symbol, 1, 'buy', 'market','gtc')
-                print(f'position exited')
+        
+        if quantity != []:
+            purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)        
+            if float(purchase_price) - float(current_price) >= 0.50:
+                    self.api.submit_order(self.symbol, 1, 'buy', 'market','gtc')
+                    print(f'position exited')
 
                     
             
