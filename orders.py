@@ -19,7 +19,7 @@ class Place_Orders(Api):
                 print(f'Processing the order for {self.name}.')
                 open = Place_Orders.api.get_position(self.symbol)
                 print(f'Current open positions is {open}.')
-        if acceptable_trade_criteria is not True:
+        if acceptable_trade_criteria == False:
             print(f'price too low to execute')    
         purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)        
         if float(purchase_price) - float(current_price) >= 0.50:
