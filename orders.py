@@ -12,10 +12,13 @@ class Place_Orders(Api):
         current_price = Stock_Methods.stocks_last_hours_close
         purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)
         
-        try:
-            quantity= int(Place_Orders.api.get_position(self.symbol).qty)
-        except:
-            quantity = 0
+        quantity= Place_Orders.api.list_positions()
+        if quantity == []:
+            print(f'buy!')
+        else:
+            print(f'already have a position open')
+            print(quantity)
+        
             if acceptable_trade_criteria and quantity == 0:
                 self.api.submit_order(self.symbol, 1, 'sell', 'market','gtc')
                 print(f'Processing the order for {self.name}.')

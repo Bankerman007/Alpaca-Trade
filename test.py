@@ -18,10 +18,12 @@ def simple_test():
     print(price)
     output = price['close'].sum()
     print(output)
-    try:
-        quantity= int(Place_Orders.api.get_position('TSLA').qty)
-    except:
-        quantity = 0
+    quantity= Place_Orders.api.list_positions()
+    if quantity == []:
+        print(f'buy!')
+    else:
+        print(f'already have a position open')
+        print(quantity)
     
     print(quantity)
 lambda_handler(1,5)
