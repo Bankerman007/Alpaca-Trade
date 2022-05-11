@@ -14,7 +14,7 @@ class Place_Orders(Api):
         
         try:
             quantity= int(Place_Orders.api.get_position(self.symbol).qty)
-        except Exception:
+        except:
             quantity = 0
             if acceptable_trade_criteria and quantity == 0:
                 self.api.submit_order(self.symbol, 1, 'sell', 'market','gtc')

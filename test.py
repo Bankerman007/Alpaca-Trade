@@ -1,6 +1,8 @@
 import alpaca_trade_api as tradeapi
 from alpaca_trade_api.rest import TimeFrame
 import os
+from orders import Place_Orders
+
 
 key = os.environ['ALPACA_KEY']
 secret = os.environ['ALPACA_SECRET']
@@ -16,7 +18,8 @@ def simple_test():
     print(price)
     output = price['close'].sum()
     print(output)
-
+    quantity= (Place_Orders.api.get_position('TSLA'))
+    print(quantity)
 lambda_handler(1,5)
 
 
