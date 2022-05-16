@@ -1,8 +1,8 @@
 from alpaca_trade_api.rest import TimeFrame
-from api_info import Api
+from api_call import Api_call
 
 
-class Stock_Methods(Api):
+class Stock_Methods(Api_call):
     """Data for each stock that will be evaluated to trade"""
 
         

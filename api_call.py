@@ -1,7 +1,7 @@
 import alpaca_trade_api as tradeapi
 import os
 
-class Api:
+class Api_call:
     """API call information to be used by services"""
 
     key = os.environ['ALPACA_KEY']
