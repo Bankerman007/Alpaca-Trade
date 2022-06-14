@@ -7,7 +7,7 @@ class Stock_Methods(Api_call):
 
         
     def stocks_last_weeks_avg_close(self):
-        closing_prices_stocks = Stock_Methods.api.get_bars(self,TimeFrame.Day,'2022-05-09','2022-05-13').df
+        closing_prices_stocks = Stock_Methods.api.get_bars(self,TimeFrame.Day,'2022-06-06','2022-06-10').df
         sum_closing_prices= closing_prices_stocks['close'].sum()
         weekly_average = sum_closing_prices/5
         print(self,weekly_average)
