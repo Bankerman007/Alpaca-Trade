@@ -1,33 +1,43 @@
-from stocks_to_trade import actual_stocks
 from stock_prices import Stock_Methods
 from api_call import Api_call
 
 
-class Place_Orders(Api_call):
+class Place_Orders:
     """Enters or exits positions based on trade criteria"""
+    def __init__(self,name,symbol) -> None:
+        self.name = name
+        self.symbol = symbol
     
     def submit_stock_orders(self):
         acceptable_trade_criteria = Stock_Methods.stocks_trade_criteria(self.symbol)
-        current_price = Stock_Methods.stocks_last_hours_close
+        print(acceptable_trade_criteria)
+        current_price = Stock_Methods.stocks_last_hours_close(self.symbol)
+        quantity= Api_call.list_any_positions()
+        print(quantity)
+                
+        if not bool(quantity) == False:
+            purchase_price = Api_call.purchase_price(self.symbol) 
+            if float(purchase_price) - float(current_price) >= 0.05:
+                    Api_call.exit_trade_order(self.symbol)
         
-        
-        quantity= Place_Orders.api.list_positions()
-        if quantity == []:
-            if acceptable_trade_criteria and quantity == []:
-                self.api.submit_order(self.symbol, 1, 'sell', 'market','gtc')
-                print(f'Processing the order for {self.name}.')
-                open = Place_Orders.api.get_position(self.symbol)
-                print(f'Current open positions is {open}.')
+        if not bool(quantity) == True:
+            if acceptable_trade_criteria == True and not bool(quantity) == True:
+                Api_call.place_order(self.symbol)
+                  
+
         if acceptable_trade_criteria == False:
-            print(f'price too low to execute')    
+            print(f'price point not acceptable to execute any trades')    
         
-        if quantity != []:
-            purchase_price = (Place_Orders.api.get_position(self.symbol).avg_entry_price)        
-            if float(purchase_price) - float(current_price) >= 0.50:
-                    self.api.submit_order(self.symbol, 1, 'buy', 'market','gtc')
-                    print(f'position exited')
+    
+               
+
+
+
+            # if float(purchase_price) - float(current_price) >= 0.50:
+            #         self.api.submit_order(self.symbol, 1, 'buy', 'market','gtc')
+            #         print(f'position exited')
 
 
 if __name__ == '__main__':
-    for s in actual_stocks:
-        Place_Orders.submit_stock_orders(s)
+    twr = Place_Orders("Twitter",'TWTR')
+    Place_Orders.submit_stock_orders(twr)
