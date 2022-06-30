@@ -3,7 +3,7 @@ import os
 from alpaca_trade_api.rest import TimeFrame
 
 class Api_call:
-    """API call information to be used by services"""
+    """API call information to be used by trade criteria calculations file"""
     
     key = os.environ['ALPACA_KEY']
     secret = os.environ['ALPACA_SECRET']
@@ -21,20 +21,20 @@ class Api_call:
 
     @staticmethod
     def closing_bars(symbol):
-        closing_bars = Api_call.api.get_bars(symbol,TimeFrame.Day,'2022-06-13','2022-06-17').df
+        closing_bars = Api_call.api.get_bars(symbol,TimeFrame.Hour).df
         return closing_bars
 
     @staticmethod
     def hourly_close_bars(symbol):
-        hourly_bars = Api_call.api.get_bars(symbol,TimeFrame.Hour,limit=1).df
+        hourly_bars = Api_call.api.get_bars(symbol,TimeFrame.Hour,limit=10).df
         return hourly_bars
 
     @staticmethod
     def place_order(symbol):
-        pass
-        # Api_call.api.submit_order(symbol, 1, 'sell', 'market','gtc')
-        # print(f'Processing the order for {symbol}.')
-        # print(f'Current open positions is open.')
+        Api_call.api.submit_order(symbol, 1, 'sell', 'market','gtc')
+        print(f'Processing the order for {symbol}.')
+        print(f'Current open positions is open.')
+    
     @staticmethod
     def exit_trade_order(symbol):
         Api_call.api.submit_order(symbol, 1, 'buy', 'market','gtc')
@@ -48,8 +48,3 @@ class Api_call:
         print(f'purchase price is {entry_price}')
         return entry_price
 
-# twr =  ('Twitter', 'TWTR')
-# Api_call.closing_bars(twr)
-# Api_call.list_positions(twr)
-# Api_call.hourly_close_bars(twr)
-#Api_call.purchase_price('TWTR')
