@@ -16,20 +16,16 @@ class Stocks_and_orders:
         quantity= Api_call.list_any_positions()
         
                 
-        if not bool(quantity) == False:
+        if bool(quantity):
             purchase_price = Api_call.purchase_price(self.symbol) 
             if float(purchase_price) - float(current_price) >= 0.25:
                 Api_call.exit_trade_order(self.symbol)
         
-        if not bool(quantity) == True:
-            if acceptable_trade_criteria == True and not bool(quantity) == True:
+        if not bool(quantity):
+            if acceptable_trade_criteria and not bool(quantity):
                 Api_call.place_order(self.symbol)
                   
         if acceptable_trade_criteria == False:
-            print(f'price point not acceptable to execute any trades')    
-        
-
-
-if __name__ == '__main__':
-    twr = Stocks_and_orders("Twitter",'TWTR')
-    Stocks_and_orders.submit_stock_orders(twr)
+            print(f'price point not acceptable to execute any trades') 
+    
+       
