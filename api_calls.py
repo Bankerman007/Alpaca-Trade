@@ -31,13 +31,13 @@ class Api_call:
 
     @staticmethod
     def place_order(symbol):
-        Api_call.api.submit_order(symbol, 1, 'sell', 'market','gtc')
+        Api_call.api.submit_order(symbol, 1, 'buy', 'market','gtc')
         print(f'Processing the order for {symbol}.')
         print(f'Current open positions is open.')
     
     @staticmethod
     def exit_trade_order(symbol):
-        Api_call.api.submit_order(symbol, 1, 'buy', 'market','gtc')
+        Api_call.api.submit_order(symbol, 1, 'sell', 'market','gtc')
         print(f'Processing the order for {symbol}.')
         print(f'Positions is closed.')
     

@@ -28,7 +28,7 @@ class Trade_decisions:
         last_five = int(float(Trade_decisions.stocks_last_fivehour_avg_close(symbol)))
         last_hour = int(float(Trade_decisions.stocks_last_hours_close(symbol)))
         differnce = last_five - last_hour
-        if last_five > last_hour and differnce <= 0.05:
+        if last_five < last_hour and differnce <= 0.25:
             print(True)
             return True
         else:
