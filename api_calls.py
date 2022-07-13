@@ -17,6 +17,7 @@ class Api_call:
     @staticmethod
     def list_any_positions():
         quantity= Api_call.api.list_positions()
+        #print(bool(quantity))
         return quantity
 
     @staticmethod
@@ -45,6 +46,7 @@ class Api_call:
     @staticmethod
     def purchase_price(symbol):
         entry_price = (Api_call.api.get_position(symbol).avg_entry_price)
-        print(f'purchase price is {entry_price}')
+        #print(f'purchase price is {entry_price}')
         return entry_price
+
 

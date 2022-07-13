@@ -13,14 +13,14 @@ class Trade_decisions:
         closing_prices_stocks = Api_call.closing_bars(symbol)
         sum_closing_prices= closing_prices_stocks['close'].iloc[-5:].sum()
         hourly_average = sum_closing_prices/5
-        print(f'last 5 hours average price {hourly_average}.')
+        #print(f'last 5 hours average price {hourly_average}.')
         return hourly_average
         
     @staticmethod
     def stocks_last_hours_close(symbol):
         price = Api_call.hourly_close_bars(symbol)
         current_price_stocks = price['close'].iloc[-1]
-        print(f'current stock price {current_price_stocks}')
+        #print(f'current stock price {current_price_stocks}')
         return current_price_stocks
 
     @staticmethod
@@ -29,10 +29,10 @@ class Trade_decisions:
         last_hour = int(float(Trade_decisions.stocks_last_hours_close(symbol)))
         differnce = last_five - last_hour
         if last_five < last_hour and differnce <= 0.25:
-            print(True)
+            #print(True)
             return True
         else:
-            print(False)
+            #print(False)
             return False
 
 

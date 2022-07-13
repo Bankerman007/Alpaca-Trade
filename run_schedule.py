@@ -7,9 +7,9 @@ def run(*args):
     now = datetime.now()
     current_hour = int(now.strftime("%H%M"))
     
-    if day == 0 or 1 or 2 or 3 or 4 and current_hour >= 900 and current_hour <= 1500:
+    if day == 0 or 1 or 2 or 3 and current_hour >= 1300 and current_hour <= 1500:
         twr = Stocks_and_orders("Twitter",'TWTR')
-        twr.submit_stock_orders()  #This job is run Monday-Friday 9am-3pm.
-        print(f'this ran')
+        twr.submit_stock_orders()  #This job is run Monday-Thursday 9am-3pm.
+        #print(f'this ran')
 
 run()
