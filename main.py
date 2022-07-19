@@ -18,7 +18,7 @@ class Stocks_and_orders:
                 
         if bool(quantity):
             purchase_price = Api_call.purchase_price(self.symbol) 
-            if float(current_price) - float(purchase_price) >= 0.25:
+            if float(current_price) - float(purchase_price) >= 0.75:
                 Api_call.exit_trade_order(self.symbol)
         
         elif not bool(quantity):

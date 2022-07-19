@@ -9,12 +9,12 @@ class Trade_decisions:
         self.symbol = symbol
     
     @staticmethod    
-    def stocks_last_fivehour_avg_close(symbol):
+    def stocks_last_fiveday_avg_close(symbol):
         closing_prices_stocks = Api_call.closing_bars(symbol)
         sum_closing_prices= closing_prices_stocks['close'].iloc[-5:].sum()
-        hourly_average = sum_closing_prices/5
-        #print(f'last 5 hours average price {hourly_average}.')
-        return hourly_average
+        dayly_average = sum_closing_prices/5
+        #print(f'last 5 hours average price {dayly_average}.')
+        return dayly_average
         
     @staticmethod
     def stocks_last_hours_close(symbol):

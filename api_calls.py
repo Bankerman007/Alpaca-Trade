@@ -22,7 +22,7 @@ class Api_call:
 
     @staticmethod
     def closing_bars(symbol):
-        closing_bars = Api_call.api.get_bars(symbol,TimeFrame.Hour).df
+        closing_bars = Api_call.api.get_bars(symbol,TimeFrame.Day).df
         return closing_bars
 
     @staticmethod
