@@ -23,11 +23,13 @@ class Api_call:
     @staticmethod
     def closing_bars(symbol):
         closing_bars = Api_call.api.get_bars(symbol,TimeFrame.Day).df
+        print(closing_bars)
         return closing_bars
 
     @staticmethod
     def hourly_close_bars(symbol):
         hourly_bars = Api_call.api.get_bars(symbol,TimeFrame.Hour,limit=10).df
+        print(hourly_bars)
         return hourly_bars
 
     @staticmethod
@@ -49,4 +51,4 @@ class Api_call:
         #print(f'purchase price is {entry_price}')
         return entry_price
 
-
+Api_call.hourly_close_bars('TWTR')
