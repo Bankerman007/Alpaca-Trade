@@ -1,2 +1,2 @@
-web=0
 worker=1
+web=0
