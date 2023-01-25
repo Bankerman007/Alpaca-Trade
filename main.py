@@ -1,31 +1,29 @@
-from trade_criteria_calcs import Trade_decisions
-from api_calls import Api_call
+from trade_criteria_calcs import stocks_trade_criteria, stocks_last_hours_close, stocks_last_fiveday_avg_close
+from api_calls import list_any_positions, exit_trade_order, place_order, purchase_price
+import datetime
 
-
-class Stocks_and_orders:
-    """Enters or exits positions based on trade criteria"""
-    
-    def __init__(self,name,symbol) -> None:
-        self.name = name
-        self.symbol = symbol
-    
-    def submit_stock_orders(self):
-        acceptable_trade_criteria = Trade_decisions.stocks_trade_criteria(self.symbol)
-        #print(acceptable_trade_criteria)
-        current_price = Trade_decisions.stocks_last_hours_close(self.symbol)
-        quantity= Api_call.list_any_positions()
-        
+def submit_stock_orders():
+    file=open(r'C:\Users\scott\Documents\Python\Trading_bot\task.txt', 'a')
+    acceptable_trade_criteria = stocks_trade_criteria()
+    current_price = stocks_last_hours_close()
+    quantity= list_any_positions()
                 
-        if bool(quantity):
-            purchase_price = Api_call.purchase_price(self.symbol) 
-            if float(current_price) - float(purchase_price) >= 0.15:
-                Api_call.exit_trade_order(self.symbol)
-        
-        elif not bool(quantity):
-            if acceptable_trade_criteria and not bool(quantity):
-                Api_call.place_order(self.symbol)
-                  
+    if bool(quantity):
+        purchase_point = purchase_price() 
+        if float(current_price) - float(purchase_point) >= 0.25:
+            exit_trade_order()
+            file.write(f'{datetime.datetime.now()} - Position exited at {current_price}. \n' )
+        else:
+            file.write(f'{datetime.datetime.now()} - Price point not acceptable to execute any trades. Market price {current_price}, Purchase Price {purchase_point}.\n' )
+    
+    elif not bool(quantity):
+        if acceptable_trade_criteria and not bool(quantity):
+            place_order()
+            file.write(f'{datetime.datetime.now()} - Position is now open at {current_price}. \n' )
+
+                
         else:
             print(f'price point not acceptable to execute any trades') 
+            file.write(f'{datetime.datetime.now()} - Price point not acceptable to execute any trades. {current_price, stocks_last_fiveday_avg_close()}\n' )
     
-       
+    
