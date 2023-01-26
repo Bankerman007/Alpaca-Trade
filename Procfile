@@ -1,2 +1,1 @@
-worker=3
-web=1
+web: streamlit stream.py
