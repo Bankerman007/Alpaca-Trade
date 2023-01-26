@@ -3,7 +3,7 @@ from api_calls import list_any_positions, exit_trade_order, place_order, purchas
 import datetime
 
 def submit_stock_orders():
-    file=open(r'C:\Users\scott\Documents\Python\trade_bot\task.txt', 'a')
+    file=open(r'C:\Users\scott\Documents\Python\tradebot\task.txt', 'a')
     acceptable_trade_criteria = stocks_trade_criteria()
     current_price = stocks_last_hours_close()
     quantity= list_any_positions()
