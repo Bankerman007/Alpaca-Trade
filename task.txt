@@ -147,3 +147,4 @@
 2023-01-25 19:19:27.174446 - Price point not acceptable to execute any trades. Market price 144.44, Purchase Price 145.59.
 2023-01-26 12:15:48.740721 - Price point not acceptable to execute any trades. (157.34, 144.02333333333334)
 2023-01-26 12:49:05.628873 - Price point not acceptable to execute any trades. (157.84, 144.02333333333334)
+2023-01-27 13:44:16.912407 - Price point not acceptable to execute any trades. (179.15, 149.53)
