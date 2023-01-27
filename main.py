@@ -10,7 +10,7 @@ def submit_stock_orders():
                 
     if bool(quantity):
         purchase_point = purchase_price() 
-        if float(current_price) - float(purchase_point) >= 0.25:
+        if float(current_price) - float(purchase_point) >= 4.00:
             exit_trade_order()
             file.write(f'{datetime.datetime.now()} - Position exited at {current_price}. \n' )
         else:

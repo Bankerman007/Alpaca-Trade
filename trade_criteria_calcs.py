@@ -16,7 +16,7 @@ def stocks_trade_criteria():
     last_five = float(stocks_last_fiveday_avg_close())
     last_hour = float(stocks_last_hours_close())
     difference = last_hour - last_five
-    if last_five < last_hour and difference <= 3.00:
+    if last_five < last_hour and difference <= 2.00:
         return True
     else:
         return False
