@@ -12,18 +12,18 @@ def submit_stock_orders():
         purchase_point = purchase_price() 
         if float(current_price) - float(purchase_point) >= 4.00:
             exit_trade_order()
-            file.write(f'{datetime.datetime.now()} - Position exited at {current_price}. \n' )
+            file.write(f'API Call {datetime.datetime.now()} - Position exited at {current_price}. \n' )
         else:
-            file.write(f'{datetime.datetime.now()} - Price point not acceptable to execute any trades. Market price {current_price}, Purchase price {purchase_point}.\n' )
+            file.write(f'API call {datetime.datetime.now()} - No trades executed, Price {current_price} | Purchase price {purchase_point}.\n' )
     
     elif not bool(quantity):
         if acceptable_trade_criteria and not bool(quantity):
             place_order()
-            file.write(f'{datetime.datetime.now()} - Position is now open at {current_price}. \n' )
+            file.write(f'API call {datetime.datetime.now()} - Position is now open at {current_price}. \n' )
 
                 
         else:
             print(f'price point not acceptable to execute any trades') 
-            file.write(f'{datetime.datetime.now()} - Price point not acceptable to execute any trades. Current price {current_price}, Average price {stocks_last_fiveday_avg_close()}.\n' )
+            file.write(f'API Call {datetime.datetime.now()} - No trades executed, Price {current_price} | Avg price {stocks_last_fiveday_avg_close()}\n' )
     
     

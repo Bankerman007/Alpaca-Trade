@@ -1,1 +1,1 @@
-2023-01-27 17:19:48.169868 - Price point not acceptable to execute any trades. Current price 177.88, Average price 149.53.
+API Call 2023-01-27 18:05:53.734361 - No trades executed, Price 177.88 | Avg price 149.53
