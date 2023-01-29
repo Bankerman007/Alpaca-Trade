@@ -25,13 +25,12 @@ def get_data():
     cur=conn.cursor()
     cur.execute("SELECT * FROM hstory;")
     data=(cur.fetchall())
-    cur.close()
     full_frame = pd.DataFrame(data)
-    data_frame= full_frame.head()
+    data_frame= full_frame.head(25)
     removed_frame_columns=data_frame[data_frame.columns[1:6]]
     data_frame_changed_column_names=removed_frame_columns.rename(columns={1: 'Date/Time', 2: 'Message',3:'Price',4:'Avg Price',5:'Purchase Price'})
-    
+    cur.close()
     return data_frame_changed_column_names
 
-
+get_data()
     
