@@ -3,7 +3,6 @@ import pandas as pd
 from api_calls import get_profits
 from python_to_postgres import get_data
 
-
 st.sidebar.write("Trade Bot")
 option = st.sidebar.selectbox("Trade or Profit History?", ("Trade History", "Profit/Loss History"),1)
 st.header(option)

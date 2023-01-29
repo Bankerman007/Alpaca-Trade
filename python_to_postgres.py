@@ -32,4 +32,6 @@ def get_data():
     data_frame_changed_column_names=removed_frame_columns.rename(columns={1: 'Date/Time', 2: 'Message',3:'Price',4:'Avg Price',5:'Purchase Price'})
     
     return data_frame_changed_column_names
+
+
     
