@@ -2,10 +2,13 @@ import psycopg2
 import psycopg2.extras
 import pandas as pd
 
+
 def save_to_db(new_data):
     conn= psycopg2.connect('postgres://ckgoxpjf:QCM5ShnNLkFWCSfxwmipoq9YtKdh4o4g@raja.db.elephantsql.com/ckgoxpjf')
+
     cur=conn.cursor()
     conn.cursor()
+    
     #cur.execute('CREATE TABLE hstory (id SERIAL PRIMARY KEY, date VARCHAR, message VARCHAR(50), price DECIMAL, AvgPrice DECIMAL, PurchasePrice DECIMAL);')
 
     insert_script= 'INSERT INTO hstory (date, message, price, AvgPrice, PurchasePrice) VALUES (%s,%s,%s,%s,%s)'
