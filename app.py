@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from api_calls import get_profits
+from python_to_postgres import get_data
 
 
 st.sidebar.write("Trade Bot")
@@ -8,7 +9,7 @@ option = st.sidebar.selectbox("Trade or Profit History?", ("Trade History", "Pro
 st.header(option)
 if option == "Trade History":
     st.subheader("TSLA")
-    dataframe1 = pd.read_csv("task.txt")
+    dataframe1 = get_data()
     st.dataframe(dataframe1)
 
 if option == "Profit/Loss History":
