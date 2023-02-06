@@ -15,6 +15,8 @@ if option == "Profit/Loss History":
     st.subheader("TSLA")
     profit_history= get_profits()
     st.bar_chart(profit_history)
+    print(profit_history)
+
     
 
 

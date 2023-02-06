@@ -4,8 +4,8 @@ symbol = 'TSLA'
       
 def stocks_last_fiveday_avg_close():
     closing_prices_stocks = closing_bars()
-    sum_closing_prices= closing_prices_stocks['close'].iloc[-3:].sum()
-    daily_average = sum_closing_prices/3
+    sum_closing_prices= closing_prices_stocks['close'].iloc[-5:].sum()
+    daily_average = sum_closing_prices/5
     return float(round(daily_average,2))    
 
 def stocks_last_hours_close():

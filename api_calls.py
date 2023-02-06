@@ -60,7 +60,7 @@ def purchase_price():
 #     file.write(f'{orders} -. \n' )
 
 def get_profits():
-    data= api.get_portfolio_history(period="1W",timeframe="1D").df
+    data= api.get_portfolio_history(period="3M",timeframe="1D").df
     profits =data["profit_loss"]
     return profits
 

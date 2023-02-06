@@ -18,6 +18,7 @@ def submit_stock_orders():
         if float(current_price) - float(purchase_point) >= 4.00:
             exit_trade_order()
             new_data= (f'"{time_acceptalbe_format}","Position exited.",{current_price},{stocks_last_fiveday_avg_close()},{purchase_point}')
+            save_to_db(eval(new_data))
         else:
             new_data= (f'"{time_acceptalbe_format}","No trades executed.",{current_price},{stocks_last_fiveday_avg_close()},{purchase_point}')
             save_to_db(eval(new_data))
