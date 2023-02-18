@@ -26,7 +26,7 @@ def get_data():
     cur.execute("SELECT * FROM hstory;")
     data=(cur.fetchall())
     full_frame = pd.DataFrame(data)
-    data_frame= full_frame.tail(100)
+    data_frame= full_frame.tail(500)
     removed_frame_columns=data_frame[data_frame.columns[1:6]]
     data_frame_changed_column_names=removed_frame_columns.rename(columns={1: 'Date/Time', 2: 'Message',3:'Price',4:'Avg Price',5:'Purchase Price'})
     cur.close()
