@@ -4,7 +4,7 @@ import datetime
 from python_to_postgres import save_to_db
 
 time_includes_milli = datetime.datetime.now()
-time_without_leading_zero=time_includes_milli.isoformat(timespec="seconds").replace("-0", "-")
+time_without_leading_zero=time_includes_milli.isoformat(timespec="minutes").replace("-0", "-")
 time_acceptalbe_format= time_without_leading_zero.replace("T"," ")
 
 def submit_stock_orders():
